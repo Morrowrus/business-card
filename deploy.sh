@@ -31,12 +31,12 @@ read -p "Instagram username: " INSTAGRAM
 read -p "VK username: " VK
 read -p "Cal.com username: " CALCOM_USER
 read -p "Краткое описание: " BIO
-read -p "Путь к фото: " PHOTO_PATH
 
 # Формирование переменных
 FIRST_LAST=$(echo "$FULL_NAME" | tr ' ' '_')
 DEPLOY_PATH="/opt/web-${DOMAIN%%.*}"
 SITE_PATH="${DEPLOY_PATH}/site"
+PHOTO_PATH="/root/photo.jpg"
 
 echo -e "\n${BLUE}Клонирование шаблонов...${NC}"
 TMP_DIR=$(mktemp -d)
@@ -74,7 +74,10 @@ if [ -f "$PHOTO_PATH" ]; then
   cp "$PHOTO_PATH" "$SITE_PATH/photo.jpg"
   echo -e "${GREEN}✓ Фото скопировано${NC}"
 else
-  echo -e "${YELLOW}⚠ Фото не найдено, добавьте вручную в $SITE_PATH/photo.jpg${NC}"
+  echo -e "${YELLOW}⚠ Фото не найдено!${NC}"
+  echo -e "${YELLOW}Загрузите файл photo.jpg в /root/ через FileZilla${NC}"
+  echo -e "${YELLOW}После загрузки выполните:${NC}"
+  echo -e "  cp /root/photo.jpg $SITE_PATH/photo.jpg"
 fi
 
 # Очистка
