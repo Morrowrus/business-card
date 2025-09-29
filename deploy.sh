@@ -13,8 +13,8 @@ REPO_URL="https://github.com/Morrowrus/business-card.git"
 echo -e "${BLUE}=== Генератор визитки с календарем ===${NC}\n"
 
 # Проверка зависимостей
-command -v git >/dev/null 2>&1 || { echo -e "${RED}Требуется git${NC}"; exit 1; }
-command -v docker >/dev/null 2>&1 || { echo -e "${RED}Требуется docker${NC}"; exit 1; }
+command -v git >/dev/null 2>&1 || { echo -e "${RED}Требуется git. Установите: apt install git${NC}"; exit 1; }
+command -v docker >/dev/null 2>&1 || { echo -e "${RED}Требуется docker. Установите: curl -fsSL https://get.docker.com | sh${NC}"; exit 1; }
 
 # Запрос данных
 read -p "Домен (например, ivanov.xyz): " DOMAIN
@@ -82,8 +82,7 @@ rm -rf "$TMP_DIR"
 
 echo -e "\n${GREEN}✓ Визитка создана в: $DEPLOY_PATH${NC}"
 echo -e "\n${YELLOW}=== Следующие шаги ===${NC}"
-echo "1. Зарегистрируйтесь на cal.com/$CALCOM_USER"
-echo "2. Подключите Google календари в Cal.com"
-echo "3. Добавьте favicon.ico в $SITE_PATH/"
-echo "4. Запустите: cd $DEPLOY_PATH && docker-compose up -d"
-echo "5. Настройте DNS: $DOMAIN -> IP сервера"
+echo "1. Перейдите в папку: cd $DEPLOY_PATH"
+echo "2. Запустите: docker-compose up -d"
+echo "3. Зарегистрируйтесь на cal.com/$CALCOM_USER"
+echo "4. Подключите Google календари в Cal.com"
