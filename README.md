@@ -43,4 +43,4 @@ chmod +x deploy.sh
 1. Зарегистрируйтесь на cal.com
 2. Подключите Google календари
 3. Добавьте фото и favicon
-4. Запустите: `docker-compose up -d`
+4. Запустите: `docker compose up -d`
